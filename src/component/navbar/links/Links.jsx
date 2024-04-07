@@ -1,7 +1,7 @@
 "use client";
-import NavLink from "@/component/navbar/navLink/NavLink";
-import styles from "./links.module.css";
 import { useState } from "react";
+import styles from "./links.module.css";
+import NavLink from "../navLink/navLink";
 
 const links = [
   {
@@ -27,7 +27,7 @@ const Links = () => {
   const session = true;
   const isAdmin = true;
   return (
-    <div>
+    <div className={styles.container}>
       <div className={styles.links}>
         {links.map((link) => (
           <NavLink item={link} key={link.title} />
