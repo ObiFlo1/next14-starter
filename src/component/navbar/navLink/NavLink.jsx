@@ -10,7 +10,7 @@ function navLink({ item }) {
       href={item.path}
       key={item.title}
       className={`${styles.container} ${
-        pathName === item.title && styles.active
+        pathName === item.path && styles.active
       }`}
     >
       {item.title}
