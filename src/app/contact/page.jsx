@@ -9,9 +9,9 @@ function ContactPage() {
       </div>
       <div className={styles.formContainer}>
         <form className={styles.form}>
-          <input />
-          <input />
-          <input />
+          <input type="text" placeholder="Name and Last Name" />
+          <input type="text" placeholder="Email Address" />
+          <input type="text" placeholder="Phone Number (Optional" />
           <textarea
             name=""
             id=""

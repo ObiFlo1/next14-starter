@@ -1,7 +1,14 @@
+import PostCard from "@/component/postCard/postcard";
+import styles from "./blog.module.css";
 function BlogPage() {
   return (
-    <div>
-      <h1>BlogPage</h1>
+    <div className={styles.container}>
+      <div className={styles.post}>
+        <PostCard />
+      </div>
+      <div className={styles.post}>
+        <PostCard />
+      </div>
     </div>
   );
 }
