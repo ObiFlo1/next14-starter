@@ -5,7 +5,7 @@ function NavBar() {
   return (
     <div className={styles.container}>
       <Link href="/" className={styles.logo}>
-        Logs
+        Flo$s
       </Link>
       <div>
         <Links />
