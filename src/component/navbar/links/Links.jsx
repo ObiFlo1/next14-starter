@@ -42,10 +42,8 @@ const Links = () => {
         )}
       </div>
       <button onClick={() => setOpen((prev) => !prev)}>Menu</button>
-
-      {/* IF ISOPEN IS TRUE DO THIS:      THERE IS NO 'ELSE' */}
       {open && (
-        <div className={styles.mobileLinks}>
+        <div className={styles.Links}>
           {links.map((link) => (
             <NavLink item={link} key={link.title} />
           ))}
