@@ -2,7 +2,7 @@ import Image from "next/image";
 import styles from "./postCard.module.css";
 import Link from "next/link";
 
-function PostCard() {
+function PostCard({ post }) {
   return (
     <div className={styles.container}>
       <div className={styles.top}>
@@ -17,17 +17,9 @@ function PostCard() {
         <span className={styles.date}>04.08.2024</span>
       </div>
       <div className={styles.bottom}>
-        <h1 className={styles.title}> </h1>
-        <p className={styles.desc}>
-          {" "}
-          In the image, a radiant young woman captivates with her stunning
-          features and graceful demeanor. Her eyes sparkle with warmth and
-          depth, drawing viewers into a world of enchantment. The gentle curve
-          of her smile exudes confidence and allure, while her flowing hair
-          frames her face like a halo of sunlight. Every detail in the image
-          harmonizes to portray a vision of timeless beauty and elegance.
-        </p>
-        <Link className={styles.link} href="/blog/post">
+        <h1 className={styles.title}>{post.title}</h1>
+        <p className={styles.desc}>{post.body}</p>
+        <Link className={styles.link} href={`/blog/${post.id}`}>
           READ MORE
         </Link>
       </div>
