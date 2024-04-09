@@ -2,14 +2,16 @@ import Image from "next/image";
 import styles from "./singlePost.module.css";
 import PostUser from "@/component/postUser/postUser";
 import { Suspense } from "react";
+import { getPost } from "@/lib/data";
 
 // theres some parameter throws and catches here . gotta follow the white rabbit when it comes to parameter here. ill try to comment which is the first paremeter.
 // 1st. const {slug} = params. 2. gets passed in the invoked getData. 3. slug gets passed in as a parameter in the initialation function getdata. 4. gets used as a parameter
 
-async function getData(slug) {
-  const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`);
-  return res.json();
-}
+//    THIS IS HOW YOU WOULD FETCH DATA FROM AN API
+// async function getData(slug) {
+//   const res = await fetch(`https://jsonplaceholder.typicode.com/posts/${slug}`);
+//   return res.json();
+// }
 
 // async function getUser() {
 //   const res = await fetch(`https://jsonplaceholder.typicode.com/${users}`);
@@ -20,7 +22,11 @@ async function getData(slug) {
 async function SinglePostPage({ params }) {
   // params is a build in react thing ig.
   const { slug } = params;
-  const post = await getData(slug);
+  //FETCH DATA WITH ONLINE API
+  // const post = await getData(slug);
+
+  //FETCH DATA WITHOUT API. WITH LOCAL REPO
+  const post = await getPost(slug);
 
   return (
     <div className={styles.container}>
@@ -33,7 +39,7 @@ async function SinglePostPage({ params }) {
         />
       </div>
       <div className={styles.textContainer}>
-        <h1 className={styles.title}>{post.title}</h1>
+        <h1 className={styles.title}>{post?.title}</h1>
         <div className={styles.detail}>
           <Image
             className={styles.avatar}
@@ -42,14 +48,17 @@ async function SinglePostPage({ params }) {
             width={50}
             height={50}
           />
-          <Suspense fallback={<div>loading...</div>} />
-          <PostUser userid={post.userId} />
+          {post && (
+            <Suspense fallback={<div>loading...</div>}>
+              <PostUser userid={post.userId} />
+            </Suspense>
+          )}
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
             <span className={styles.detailVlaue}>dynamic date 01.03.2024</span>
           </div>
         </div>
-        <div className={styles.content}>{post.body}</div>
+        <div className={styles.content}>{post?.body}</div>
       </div>
     </div>
   );

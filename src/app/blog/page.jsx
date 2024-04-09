@@ -1,15 +1,20 @@
 import PostCard from "@/component/postCard/postcard";
 import styles from "./blog.module.css";
-
-async function getData() {
-  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
-  return res.json();
-}
+import { getPosts } from "@/lib/data";
+//    THIS HOW YOU WOULD FETCH DATA WITH AN API
+// async function getData() {
+//   const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+//   return res.json();
+// }
 
 async function BlogPage() {
   // params is a build in react thing ig.
 
-  const posts = await getData();
+  //  FETCH DATA WITH AN ONLINE APII
+  // const posts = await getData();
+
+  //  GET DATA WITHOUT AN ONLINE API. THIS IS FROM OWN LOCAL REPO
+  const posts = await getPosts();
 
   return (
     <div className={styles.container}>
