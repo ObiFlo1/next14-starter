@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./singlePost.module.css";
 import PostUser from "@/component/postUser/postUser";
+import { Suspense } from "react";
 
 // theres some parameter throws and catches here . gotta follow the white rabbit when it comes to parameter here. ill try to comment which is the first paremeter.
 // 1st. const {slug} = params. 2. gets passed in the invoked getData. 3. slug gets passed in as a parameter in the initialation function getdata. 4. gets used as a parameter
@@ -41,6 +42,7 @@ async function SinglePostPage({ params }) {
             width={50}
             height={50}
           />
+          <Suspense fallback={<div>loading...</div>} />
           <PostUser userid={post.userId} />
           <div className={styles.detailText}>
             <span className={styles.detailTitle}>Published</span>
@@ -54,3 +56,5 @@ async function SinglePostPage({ params }) {
 }
 
 export default SinglePostPage;
+
+// clg !!!
